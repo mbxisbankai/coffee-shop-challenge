@@ -1,7 +1,7 @@
 # Coffee-shop-challenge
 A simple order management system that keeps track of customers' coffee orders
 
-# To run the test.py file
+# Testing
 - Navigate to the root folder of this project
 ```
 cd coffee-shop-challenge/
