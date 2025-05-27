@@ -1,10 +1,9 @@
-from customer import Customer
-from coffee import Coffee
-
 class Order:
     num_of_orders = 0
 
     def __init__(self, customer, coffee, price):
+        from customer import Customer
+        from coffee import Coffee
         if isinstance(customer, Customer):
             self._customer = customer
             customer.orders.append(self)
