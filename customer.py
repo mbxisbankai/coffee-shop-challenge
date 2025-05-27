@@ -1,5 +1,4 @@
 class Customer:
-    
     all = []
 
     def __init__(self, name):
@@ -14,16 +13,16 @@ class Customer:
     @property
     def name(self):
         return self._name
-    
+
     @name.setter
     def name(self, name):
         if isinstance(name, str) and 1 <= len(name) <= 15:
             self._name = name
 
     def create_order(self, coffee, price):
-        from order import Order
+        from order import Order  # kept as local import
         return Order(self, coffee, price)
-    
+
     @classmethod
     def most_aficionado(cls, coffee):
         max_spender = None
@@ -38,5 +37,6 @@ class Customer:
                 max_spender = customer
 
         return max_spender
+
 
 
