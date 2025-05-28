@@ -18,7 +18,8 @@ class Coffee:
             return 0
         total_price = sum(order.price for order in self.orders)
         return total_price / len(self.orders)
-
+        
+    @property
     def num_orders(self):
         return len(self.orders)
     
