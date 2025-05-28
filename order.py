@@ -17,8 +17,8 @@ class Order:
         else:
             raise TypeError('Coffee must be an instance of the Coffee Class.')
 
-        if isinstance(price, (int, float)) and 10 <= price <= 100:
-            self.price = price
+        if isinstance(price, (int, float)) and 1 <= price <= 10:
+            self._price = price
         else:
             raise ValueError('Please enter a valid price.')
 
@@ -36,3 +36,7 @@ class Order:
     @property
     def customer(self):
         return self._customer
+    
+    @property
+    def price(self):
+        return self._price
