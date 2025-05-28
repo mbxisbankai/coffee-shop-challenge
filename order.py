@@ -1,26 +1,26 @@
-from typing import TYPE_CHECKING
-
-if TYPE_CHECKING:
-    from customer import Customer
-    from coffee import Coffee
+from customer import Customer
+from coffee import Coffee
 
 class Order:
     num_of_orders = 0
 
-    def __init__(self, customer: 'Customer', coffee: 'Coffee', price: float):
-        if not isinstance(customer, Customer):
-            raise TypeError('Customer must be an instance of the Customer class.')
-        if not isinstance(coffee, Coffee):
-            raise TypeError('Coffee must be an instance of the Coffee class.')
-        if not (isinstance(price, (int, float)) and 10 <= price <= 100):
-            raise ValueError('Please enter a valid price between 10 and 100.')
+    def __init__(self, customer, coffee, price):
+        if isinstance(customer, Customer):
+            self._customer = customer
+            customer.orders.append(self)
+        else:
+            raise TypeError('Customer must be an instance of the Customer Class.')
 
-        self._customer = customer
-        self._coffee = coffee
-        self.price = price
+        if isinstance(coffee, Coffee):
+            self._coffee = coffee
+            coffee.orders.append(self)
+        else:
+            raise TypeError('Coffee must be an instance of the Coffee Class.')
 
-        customer.orders.append(self)
-        coffee.orders.append(self)
+        if isinstance(price, (int, float)) and 10 <= price <= 100:
+            self.price = price
+        else:
+            raise ValueError('Please enter a valid price.')
 
         if coffee not in customer.coffees:
             customer.coffees.append(coffee)
@@ -30,9 +30,9 @@ class Order:
         Order.num_of_orders += 1
 
     @property
-    def customer(self):
-        return self._customer
-
-    @property
     def coffee(self):
         return self._coffee
+
+    @property
+    def customer(self):
+        return self._customer
