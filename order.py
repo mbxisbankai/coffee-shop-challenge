@@ -13,7 +13,7 @@ class Order:
         from coffee import Coffee
         self._coffee = coffee
         self._customer = customer
-        self._price = price
+        self.price = price
 
         if isinstance(customer, Customer):
             self._customer = customer
