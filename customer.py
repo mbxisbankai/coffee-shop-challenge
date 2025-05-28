@@ -18,6 +18,8 @@ class Customer:
     def name(self, name):
         if isinstance(name, str) and 1 <= len(name) <= 15:
             self._name = name
+        else:
+            raise ValueError('Name must be a string between 1 and 15 characters.')
 
     def create_order(self, coffee, price):
         from order import Order  # kept as local import
